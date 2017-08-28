@@ -14,7 +14,7 @@ pragma solidity ^0.4.10;
 import "ds-auth/auth.sol";
 import "ds-note/note.sol";
 
-contract DSStop is DSAuth, DSNote {
+contract DSStop is DSNote, DSAuth {
 
     bool public stopped;
 
