@@ -9,7 +9,7 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND (express or implied).
 
-pragma solidity ^0.4.10;
+pragma solidity ^0.4.13;
 
 import "ds-test/test.sol";
 
@@ -57,7 +57,7 @@ contract DSStopTest is DSTest {
 
     function testSanity() {
         thing.toggle();
-        assert(thing.x());
+        assertTrue(thing.x());
     }
 
     function testFailStop() {
@@ -74,14 +74,14 @@ contract DSStopTest is DSTest {
         thing.stop();
         thing.start();
         thing.toggle();
-        assert(thing.x());
+        assertTrue(thing.x());
     }
 
     function testStartUser() {
         thing.stop();
         thing.start();
         user.doToggle();
-        assert(thing.x());
+        assertTrue(thing.x());
     }
 
     function testFailStopAuth() {
