@@ -19,19 +19,19 @@ contract User {
 
     TestThing thing;
 
-    function User(TestThing thing_) {
+    function User(TestThing thing_) public {
         thing = thing_;
     }
 
-    function doToggle() {
+    function doToggle() public {
         thing.toggle();
     }
 
-    function doStop() {
+    function doStop() public {
         thing.stop();
     }
 
-    function doStart() {
+    function doStart() public {
         thing.start();
     }
 }
@@ -40,7 +40,7 @@ contract TestThing is DSStop {
 
     bool public x;
 
-    function toggle() stoppable {
+    function toggle() public stoppable {
         x = x ? false : true;
     }
 }
@@ -50,45 +50,45 @@ contract DSStopTest is DSTest {
     TestThing thing;
     User user;
 
-    function setUp() {
+    function setUp() public {
         thing = new TestThing();
         user = new User(thing);
     }
 
-    function testSanity() {
+    function testSanity() public {
         thing.toggle();
         assertTrue(thing.x());
     }
 
-    function testFailStop() {
+    function testFailStop() public {
         thing.stop();
         thing.toggle();
     }
 
-    function testFailStopUser() {
+    function testFailStopUser() public {
         thing.stop();
         user.doToggle();
     }
 
-    function testStart() {
+    function testStart() public {
         thing.stop();
         thing.start();
         thing.toggle();
         assertTrue(thing.x());
     }
 
-    function testStartUser() {
+    function testStartUser() public {
         thing.stop();
         thing.start();
         user.doToggle();
         assertTrue(thing.x());
     }
 
-    function testFailStopAuth() {
+    function testFailStopAuth() public {
         user.doStop();
     }
 
-    function testFailStartAuth() {
+    function testFailStartAuth() public {
         user.doStart();
     }
 }
