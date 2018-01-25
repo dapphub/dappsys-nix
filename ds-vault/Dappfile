@@ -1,0 +1,7 @@
+name            ds-vault
+description     Vaults hold ERC20 tokens
+version         K99
+
+author          Nikolai Mushegian <nikolai@nexusdev.us>
+author          Daniel Brockman <daniel@brockman.se>
+license         Apache-2.0
