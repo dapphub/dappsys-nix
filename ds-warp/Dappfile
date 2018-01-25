@@ -1,0 +1,6 @@
+name            ds-warp
+description     Time travel for the masses
+version         0.0.1
+
+author          dapphub
+license         Apache-2.0
